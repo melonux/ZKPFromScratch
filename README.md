@@ -15,4 +15,4 @@ The examples in the text are concise and powerful, and it compares methods of wr
 
 # Working on
 
-- Translating the foundational [Number Theory](https://crypto.stanford.edu/pbc/notes/numbertheory/), essential for understanding ZKP, into Chinese.
+- Translating the foundational [Number Theory](https://crypto.stanford.edu/pbc/notes/numbertheory/), essential for understanding ZKP, into Chinese. Typo errors in the original text will be corrected. Sections where the explanation jumps or lacks coherence will be annotated with additional explanations.
