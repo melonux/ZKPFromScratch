@@ -44,7 +44,7 @@ $$3 = 27 - 4 \times (3 - 1 \times 27) = (-4) \times 33 + 5 \times 27$$
 
 因此一般说来，给定整数 $a,b$ ，令 $d=\gcd(a,b)$ 。那么我们就能使用扩展 Euclid 算法找到一对整数 $m,n$ 满足
 $$d=ma+nb$$
-# 一般解
+# 通解
 
 现在我们可以回答开篇的问题了，给定整数 $a,b,c$ ，找到所有的整数对 $x,y$ 满足 
 $$c=xa+yb \tag{1}$$
@@ -69,13 +69,21 @@ x'&=x+tb'=x+tb/d \\
 y'&=y-ta'=y-ta/d
 \end{align*}
 $$
-注意到上式对任意的 $t \in \mathbb{Z}$ 都成立，因此原方程 (1) 的可以有无数组解，通式为：
+注意到上式对任意的 $t \in \mathbb{Z}$ 都成立，因此原方程 (1) 的可以有无数组解，通解为：
 $$
 \begin{align*}
 x&=km+tb/d \\
 y&=kn-ta/d
 \end{align*} \tag{3}
 $$
+> 【译注】可以将通解代回原方程 (1) 验证一下 $$
+\begin{align*}
+kma+\cancel{tab/d}+knb-\cancel{tab/d}&=kd \\
+&\Downarrow \\
+ma+nb&=d
+\end{align*}
+$$
+
 将来我们会经常需要求解方程 $1=xp+yq$ ，其中 $p,q$ 互质。在这种情况下，(3) 会变为：
 $$
 \begin{align*}
@@ -83,4 +91,6 @@ x&=m+tq \\
 y&=n-tp
 \end{align*}
 $$
+>【译注】即 $d=1,k=1$ 这种特殊情况下的通解。
 
+>【译注】整体思路就是用 Euclid 算法得到一个特解 $x=km,\; y=kn$ ，然后利用 (3) 扩展成通解。
