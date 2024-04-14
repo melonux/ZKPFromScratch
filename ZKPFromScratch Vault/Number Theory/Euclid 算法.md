@@ -55,32 +55,32 @@ $$c=xa+yb \tag{1}$$
 假设 $x',y'$ 是另一组解，则
 $$c=xa+yb=x'a+y'b$$
 整理得，
-$$(x'-x)a=(y'-y)b$$
+$$(x'-x)a=(y-y')b$$
 两侧同除以 $d$ 得：
-$$(x'-x)a'=(y'-y)b' \tag{2}$$
+$$(x'-x)a'=(y-y')b' \tag{2}$$
 因为 $d$ 是最大公约数， $a',b'$ 是互质的，所以 $(x-x')$ 是 $b'$ 的倍数，即：
 $$x'-x=tb'$$
 其中 $t \in \mathbb{Z}$。代入 (2) 得
-$$y'-y=ta'$$
+$$y-y'=ta'$$
 因此 
 $$
 \begin{align*}
 x'&=x+tb'=x+tb/d \\
-y'&=y+ta'=y+ta/d
+y'&=y-ta'=y-ta/d
 \end{align*}
 $$
 注意到上式对任意的 $t \in \mathbb{Z}$ 都成立，因此原方程 (1) 的可以有无数组解，通式为：
 $$
 \begin{align*}
 x&=km+tb/d \\
-y&=kn+ta/d
+y&=kn-ta/d
 \end{align*} \tag{3}
 $$
 将来我们会经常需要求解方程 $1=xp+yq$ ，其中 $p,q$ 互质。在这种情况下，(3) 会变为：
 $$
 \begin{align*}
 x&=m+tq \\
-y&=n+tp
+y&=n-tp
 \end{align*}
 $$
 
