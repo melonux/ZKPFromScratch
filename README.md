@@ -3,6 +3,10 @@ Exploring zero-knowledge proofs (ZKP) starting with zero knowledge — a journey
 
 I'll put the knowledge in `ZKPFromScratch vault/` and the experimental codes in `src/`.
 
+# Usage
+
+To import all notes, users only need to open the [Obsidian software](https://obsidian.md/), click "Open folder as vault", and select `ZKPFromScratch vault/`.
+
 # Reference
 
 Below are the most useful reference materials for me:
