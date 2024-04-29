@@ -49,6 +49,35 @@ $$3 = 27 - 4 \times (3 - 1 \times 27) = (-4) \times 33 + 5 \times 27$$
 
 因此一般说来，给定整数 $a,b$ ，令 $d=\gcd(a,b)$ 。那么我们就能使用扩展 Euclid 算法找到一对整数 $m,n$ 满足
 $$d=ma+nb$$
+> 【译注】算法实现思路。由于 $\gcd(a,b)=\gcd(|a|,|b|)$ ，不妨令 $a>b>0$ 。把 $a,b$ 都看作某一步留下的余数：$r_0=a,\; r_1=b$ ，下标 $i$ 从 $2$ 开始，每轮都加一。定义4个序列 $\{q_i\},\; \{r_i\},\; \{s_i\},\; \{t_i\}$ ，满足 $r_{i-2}=r_{i-1}q_i+r_i,\; r_i \in [0,r_{i-1})$ 。我们的目标是将 $r_i$ 表示为 $a,b$ 的线性组合：$r_i=s_i a+t_i b$ ，但手头只有 $r_i=r_{i-2}-r_{i-1}q_i$ 。将前者按下表代入可得： $$
+ \begin{align*}
+ r_i &= s_{i-2}a+t_{i-2}b-(s_{i-1}a+t_{i-1}b)q_i \\
+  &= (s_{i-2}-s_{i-1}q_i)a+(t_{i-2}-t_{i-1}q_i)b
+ \end{align*}
+ $$于是有 $$s_i=s_{i-2} - s_{i-1} q_i, \; t_i=t_{i-2} - t_{i-1}q_i$$现在只需找出序列 $\{s_i\}, \{t_i\}$ 的初始值即可。根据 $r_i$ 的定义，我们有：
+ $$
+ \begin{align*}
+ a &= r_0 = s_0a + t_0b \implies s_0=1,\; t_0=0 \\
+ b &= r_1 = s_1a + t_1b \implies s_1=0,\; t_1=1
+ \end{align*}
+ $$  整个迭代过程是 $$\gcd(a,b)=\gcd(r_0, r_1)=\gcd(r_1, r_2)=...=\gcd(r_{n-2}, r_{n-1})=\gcd(r_{n-2}, 0)=r_{n-2}$$  于是我们期望的线性组合就是 $$\gcd(a,b)=r_{n-2}=s_{n-2}a+t_{n-2}b$$
+   实现这个算法，并不需要记录整个序列，只需要序列 $\{r_i\},\; \{s_i\},\; \{t_i\}$  的最后两个值即可。
+   
+```
+function extended_gcd(a, b)
+    s <- 0;    old_s <- 1
+    t <- 1;    old_t <- 0
+    r <- b;    old_r <- a
+    while r ≠ 0
+        quotient <- old_r div r
+        (old_r, r) <- (r, old_r - quotient * r)
+        (old_s, s) <- (s, old_s - quotient * s)
+        (old_t, t) <- (t, old_t - quotient * t)       
+    output "Bézout coefficients:", (old_s, old_t)
+    output "greatest common divisor:", old_r
+    output "quotients by the gcd:", (t, s)
+```
+ 
 # 通解
 
 现在我们可以回答开篇的问题了，给定整数 $a,b,c$ ，找到所有的整数对 $x,y$ 满足 
